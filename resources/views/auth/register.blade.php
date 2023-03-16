@@ -65,7 +65,7 @@
 
                 <p class="text-center text-sm text-gray-500">
                     Already have account?
-                    <a class="underline" href="{{ route('login') }}">Sign up</a>
+                    <a class="underline" href="{{ route('login') }}">Sign in</a>
                 </p>
             </form>
         </div>

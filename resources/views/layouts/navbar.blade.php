@@ -1,11 +1,31 @@
 @include('layouts.app')
+<div class="w-full border-2 h-12 w-9/12 justify-center mx-auto mt-4 rounded-lg flex">
+
+    <div class="py-1.5 px-1.5">
+        <img src="{{ asset('images/trackproicon.svg') }}" alt="logo" width="10%" height="10%">
+    </div>
+
+    <div class="space-x-2">
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button type="submit" class="text-black font-semibold py-2 px-4 h-10 justify-center mt-1">
+                <span class="text-blue-900 font-semibold mr-5">Welcome Back</span>
+                Logout
+                <span class="ml-5 text-blue-900">Last Login 10:12:2023 Afternoon ...</span>
+            </button>
+        </form>
+
+    </div>
+
+</div>
+
 <div class="px-8 mt-36">
     <div class="h-full p-3 space-y-2 w-60 dark:bg-gray-900 dark:text-gray-100 border-2">
         <div class="flex items-center p-2 space-x-4">
             <img src="{{ asset('images/trackproicon.svg') }}" alt="logout"
                 class="w-12 h-12 rounded-full dark:bg-gray-500">
             <div>
-                <h2 class="text-lg font-semibold">Leroy Jenkins</h2>
+                <h2 class="text-lg font-semibold">{{ Auth::user()->name }}</h2>
                 <span class="flex items-center space-x-1">
                     <a rel="noopener noreferrer" href="#" class="text-xs hover:underline dark:text-gray-400">View
                         profile</a>
@@ -21,7 +41,6 @@
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                         </svg>
-
                         <span>Dashboard</span>
                     </a>
                 </li>
