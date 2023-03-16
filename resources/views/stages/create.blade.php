@@ -5,41 +5,45 @@
     <h1
         class="font-bold border-2 font-sans text-transparent text-7xl bg-clip-text
         bg-gradient-to-r from-gray-700 to-blue-800">
-        CREATE PROJECTS
+        CREATE STAGES
     </h1>
-    <a href="{{ route('projects.index') }}">
+    <a href="{{ route('stages.index') }}">
         <x-page-button class="mt-5 ">
-            Project Index
+            Stage Index
         </x-page-button>
     </a>
-    <form enctype="multipart/form-data" class="py-5">
+
+    <form action="{{ route('stages.store') }}" method="POST">
+        @csrf
         <div class="sm:col-span-6">
-            <label for="title" class="block text-sm font-medium text-gray-700">Name</label>
+            <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
             <div class="mt-1">
-                <input type="text" id="title" wire:model.lazy="title" name="title"
+                <input type="text" id="name" name="name"
                     class="block w-full transition duration-150 ease-in-out appearance-none bg-white border-2 border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
             </div>
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="sm:col-span-6 pt-5">
-            <label for="body" class="block text-sm font-medium text-gray-700">Description</label>
+            <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
             <div class="mt-1">
-                <textarea id="body" rows="3" wire:model.lazy="body"
+                <textarea id="description" rows="3" name="description"
                     class="shadow-sm focus:ring-indigo-500 appearance-none bg-white border-2 border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"></textarea>
             </div>
+            @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
         <div class="sm:col-span-6">
-            <label for="title" class="block text-sm font-medium text-gray-700">Status</label>
+            <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <div class="mt-1">
-                <input type="text" id="title" wire:model.lazy="title" name="title"
+                <input type="text" id="status" name="status"
                     class="block w-full transition duration-150 ease-in-out appearance-none bg-white border-2 border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
             </div>
-        </div>
-        <div class="sm:col-span-6">
-            <label for="title" class="block text-sm font-medium text-gray-700">Status</label>
-            <div class="mt-1">
-                <input type="text" id="title" wire:model.lazy="title" name="title"
-                    class="block w-full transition duration-150 ease-in-out appearance-none bg-white border-2 border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
-            </div>
+            @error('status')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </div>
 
         <x-page-button class="mt-5">
