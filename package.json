@@ -4,6 +4,23 @@
         "dev": "vite",
         "build": "vite build"
     },
+    "prettier": {
+        "singleQuote": true,
+        "tabWidth": 4,
+        "useTabs": false,
+        "trailingCommaPHP": true,
+        "overrides": [
+            {
+                "files": [
+                    "*.blade.php"
+                ],
+                "options": {
+                    "tabWidth": 4,
+                    "parser": "blade"
+                }
+            }
+        ]
+    },
     "devDependencies": {
         "autoprefixer": "^10.4.14",
         "axios": "^1.1.2",
