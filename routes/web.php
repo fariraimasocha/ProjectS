@@ -25,8 +25,8 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::view('home', 'home.index')->name('home');
 
-    Route::resource('employees', 'EmployeeController::class');
-    Route::resource('companies', 'CompanyController::class');
-    Route::resource('projects', 'ProjectController::class');
-    Route::resource('stages', 'StageController::class');
+    Route::resource('/employees', EmployeeController::class);
+    Route::resource('/companies', CompanyController::class);
+    Route::resource('/projects', ProjectController::class);
+    Route::resource('/stages', StageController::class);
 });
