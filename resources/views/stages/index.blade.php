@@ -95,10 +95,6 @@
         </x-page-button>
     </a>
 
-    <x-page-button>
-        Edit
-    </x-page-button>
-
 </div>
 
 <div class="w-9/12 rounded-lg justify-center mx-auto mt-8 ">

@@ -35,6 +35,17 @@
             @enderror
         </div>
 
+        <div class="sm:col-span-6 pt-5">
+            <label for="stages" class="block text-sm font-medium text-gray-700">Stages</label>
+            <div class="mt-1">
+                <select multiple class="w-full border-2 border-gray-400" name="stages[]">
+                    @foreach ($stages as $stage)
+                        <option value="{{ $stage->id }}">{{ $stage->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
         <x-page-button class="mt-5">
             Create
         </x-page-button>

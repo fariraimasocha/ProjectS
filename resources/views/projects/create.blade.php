@@ -25,6 +25,7 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+
         <div class="sm:col-span-6 pt-5">
             <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
             <div class="mt-1">
@@ -35,6 +36,18 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
+
+        <div class="sm:col-span-6 pt-5">
+            <label for="companies" class="block text-sm font-medium text-gray-700">Companies</label>
+            <div class="mt-1">
+                <select multiple class="w-full border-2 border-gray-400" name="companies[]">
+                    @foreach ($companies as $company)
+                        <option value="{{ $company->id }}">{{ $company->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
+
         <div class="sm:col-span-6">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <div class="mt-1">
