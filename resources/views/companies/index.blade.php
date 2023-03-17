@@ -1,6 +1,14 @@
 @include('layouts.navbar')
 <div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
-    <table class="w-full whitespace-nowrap">
+    <h1
+        class="font-bold border-2 font-sans text-transparent text-6xl bg-clip-text
+        bg-gradient-to-r from-gray-700 to-blue-800">
+        COMPANIES
+    </h1>
+</div>
+<div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
+
+    <table class="w-full whitespace-nowrap mt-3">
         <tbody>
 
             <tr tabindex="0" class="focus:outline-none h-16 mb-16">
@@ -74,25 +82,29 @@
                                 {{ $company->created_at }}</p>
                         </div>
                     </td>
-                    <td class="pl-4">
-                        <a href='{{ route('companies.create') }}'>
-
-                            <x-table-button>
-                                Create
-                            </x-table-button>
-                        </a>
-
-                        <a href='#'>
-                            <x-table-button>
-                                Edit
-                            </x-table-button>
-                        </a>
-
+                    <td class="pl-4 flex space-x-3 py-3">
                         <a href='#'>
                             <x-table-button>
                                 View
                             </x-table-button>
                         </a>
+
+                        <a href="{{ route('companies.edit', $company->id) }}">
+                            <x-table-button>
+                                Edit
+                            </x-table-button>
+                        </a>
+
+                        <form method="post" action="{{ route('companies.destroy', $company->id) }}"
+                            onsubmit="return confirm('Are You Sure Want To Delete ?');">
+                            @csrf
+                            @method('DELETE')
+
+                            <x-table-button>
+                                Delete
+                            </x-table-button>
+                        </form>
+
                     </td>
 
                 </tr>
@@ -106,11 +118,6 @@
     <a href="{{ route('companies.create') }}">
         <x-page-button>
             Create
-        </x-page-button>
-    </a>
-    <a href="#">
-        <x-page-button>
-            Edit
         </x-page-button>
     </a>
 

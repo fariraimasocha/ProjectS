@@ -1,6 +1,15 @@
 @include('layouts.navbar')
 
 <div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
+    <h1
+        class="font-bold border-2 font-sans text-transparent text-6xl bg-clip-text
+        bg-gradient-to-r from-gray-700 to-blue-800">
+        STAGES
+    </h1>
+</div>
+
+<div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
+
     <table class="w-full whitespace-nowrap">
         <tbody>
             @foreach ($stages as $stage)
@@ -49,25 +58,27 @@
                         </div>
                     </td>
 
-                    <td class="pl-4">
-
-                        <a href='{{ route('stages.create') }}'>
-                            <x-table-button>
-                                Create
-                            </x-table-button>
-                        </a>
-
-                        <a href='#'>
-                            <x-table-button>
-                                Edit
-                            </x-table-button>
-                        </a>
-
+                    <td class="pl-4 space-x-3 py-3 flex ">
                         <a href='#'>
                             <x-table-button>
                                 View
                             </x-table-button>
                         </a>
+
+                        <a href='{{ route('stages.edit', $stage->id) }}'>
+                            <x-table-button>
+                                Edit
+                            </x-table-button>
+                        </a>
+                        <form method="post" action="{{ route('stages.destroy', $stage->id) }}"
+                            onsubmit="return confirm('Are You Sure Want To Delete ?');">
+                            @csrf
+                            @method('DELETE')
+                            <x-table-button>
+                                Delete
+                            </x-table-button>
+                        </form>
+
                     </td>
 
                 </tr>
