@@ -3,7 +3,7 @@
 <div class="justify-center items-center mx-auto w-5/12 mt-10">
 
     <h1
-        class="font-bold border-2 font-sans text-transparent text-7xl bg-clip-text
+        class="font-bold border-2 font-sans text-transparent text-2xl bg-clip-text
         bg-gradient-to-r from-gray-700 to-blue-800">
         CREATE PROJECTS
     </h1>
@@ -48,11 +48,15 @@
             </div>
         </div>
 
-        <div class="sm:col-span-6">
+        <div class="sm:col-span-6 pt-5">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <div class="mt-1">
-                <input type="text" id="status" name="status"
-                    class="block w-full transition duration-150 ease-in-out appearance-none bg-white border-2 border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                <select class="form-multiselect h-10 rounded-lg w-full border-2 border-gray-400" name="status"
+                    id="status">
+                    @foreach (App\Enums\ProjectStatus::cases() as $status)
+                        <option value="{{ $status->value }}">{{ $status->name }}</option>
+                    @endforeach
+                </select>
             </div>
             @error('status')
                 <div class="alert alert-danger">{{ $message }}</div>
@@ -64,14 +68,5 @@
         </x-page-button>
 
     </form>
-
-    <img src="{{ asset('images/circle.png') }}" alt="soft" class="animate-ping absolute left-24 top-56"
-        width="4%" height="4%">
-    <img src="{{ asset('images/circle.png') }}" alt="soft" class="animate-ping absolute" width="4%"
-        height="4%">
-    <img src="{{ asset('images/circle1.png') }}" alt="soft" class="animate-ping absolute right-32 bottom-8"
-        width="4%" height="4%">
-    <img src="{{ asset('images/circle1.png') }}" alt="soft" class="animate-ping absolute left-16 bottom-8"
-        width="4%" height="4%">
 
 </div>

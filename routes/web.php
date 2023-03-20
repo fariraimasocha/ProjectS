@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PS\HomeController;
 use App\Http\Controllers\PS\EmployeeController;
 use App\Http\Controllers\PS\CompanyController;
 use App\Http\Controllers\PS\ProjectController;
@@ -23,7 +23,7 @@ Route::get('/', function () {
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::view('home', 'home.index')->name('home');
+    Route::get('home', [HomeController::class, 'index'])->name('home');
 
     Route::resource('/employees', EmployeeController::class);
     Route::resource('/companies', CompanyController::class);

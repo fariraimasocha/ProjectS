@@ -16,6 +16,11 @@
 </div>
 
 <div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
+    <div class="flex space-x-2 font-bold font-sans">
+        <h1>Employee</h1>
+        <h1>description</h1>
+        <h1>date created</h1>
+    </div>
 
     <table class="w-full whitespace-nowrap">
         <tbody>
@@ -45,16 +50,6 @@
                     </td>
                     <td class="pl-4 flex space-x-3 py-3">
 
-                        <a href='{{ route('employees.show', $employee->id) }}'>
-                            <x-table-button>
-                                View
-                            </x-table-button>
-                        </a>
-                        <a href='{{ route('employees.edit', $employee->id) }}'>
-                            <x-table-button>
-                                Edit
-                            </x-table-button>
-                        </a>
                         <form method="post" action="{{ route('employees.destroy', $employee->id) }}"
                             onsubmit="return confirm('Are You Sure Want To Delete ?');">
                             @csrf
@@ -71,13 +66,4 @@
             @endforeach
         </tbody>
     </table>
-</div>
-
-<div class="w-9/12 rounded-lg justify-center mx-auto mt-8 ">
-    <a href="{{ route('employees.create') }}">
-        <x-page-button>
-            Create
-        </x-page-button>
-    </a>
-
 </div>

@@ -1,11 +1,21 @@
 @include('layouts.navbar')
 <div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
     <h1
-        class="font-bold border-2 font-sans text-transparent text-6xl bg-clip-text
+        class="font-bold border-2 font-sans text-transparent text-2xl bg-clip-text
         bg-gradient-to-r from-gray-700 to-blue-800">
         COMPANIES
     </h1>
+
 </div>
+
+<div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8 bg-amber-200">
+    @if (session()->has('success'))
+        <div class="alert alert-success mt-3 font-sans text-gray-700 text-2xl">
+            {{ session('success') }}
+        </div>
+    @endif
+</div>
+
 <div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
 
     <table class="w-full whitespace-nowrap mt-3">
@@ -83,7 +93,7 @@
                         </div>
                     </td>
                     <td class="pl-4 flex space-x-3 py-3">
-                        <a href='#'>
+                        <a href='{{ route('companies.show', $company->id) }}'>
                             <x-table-button>
                                 View
                             </x-table-button>
@@ -121,8 +131,4 @@
         </x-page-button>
     </a>
 
-</div>
-
-<div class="w-9/12 rounded-lg justify-center mx-auto mt-8 ">
-    <img src="{{ asset('images/trackproicon.svg') }}" alt="Image" width="10%" height="10%">
 </div>

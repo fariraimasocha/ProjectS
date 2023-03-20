@@ -2,10 +2,18 @@
 
 <div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
     <h1
-        class="font-bold border-2 font-sans text-transparent text-6xl bg-clip-text
+        class="font-bold border-2 font-sans text-transparent text-2xl bg-clip-text
         bg-gradient-to-r from-gray-700 to-blue-800">
         STAGES
     </h1>
+</div>
+
+<div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8 bg-amber-200">
+    @if (session()->has('success'))
+        <div class="alert alert-success mt-3 font-sans text-gray-700 text-2xl">
+            {{ session('success') }}
+        </div>
+    @endif
 </div>
 
 <div class="w-9/12 rounded-lg justify-center mx-auto border-2 mt-8">
@@ -21,12 +29,15 @@
                             </p>
                         </div>
                     </td>
+
                     <td class="">
                         <div class="">
                             <p class="text-sm leading-none text-gray-600 mb-2">
-                                50% Complete</p>
+                                {{ $stage->status === \App\Enums\StageStatus::Completed ? 100 : 60 }}%
+                            </p>
                             <div class="w-full bg-gray-200 h-1">
-                                <div class="bg-blue-600 h-1" style="width: 20%">
+                                <div class="bg-blue-600 h-1"
+                                    style="width: {{ $stage->status === \App\Enums\StageStatus::Completed ? 100 : 60 }}%;">
                                 </div>
                             </div>
                         </div>
@@ -59,7 +70,7 @@
                     </td>
 
                     <td class="pl-4 space-x-3 py-3 flex ">
-                        <a href='#'>
+                        <a href='{{ route('stages.show', $stage->id) }}'>
                             <x-table-button>
                                 View
                             </x-table-button>
@@ -95,8 +106,4 @@
         </x-page-button>
     </a>
 
-</div>
-
-<div class="w-9/12 rounded-lg justify-center mx-auto mt-8 ">
-    <img src="{{ asset('images/trackproicon.svg') }}" alt="Image" width="10%" height="10%">
 </div>

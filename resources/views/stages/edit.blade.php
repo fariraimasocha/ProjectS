@@ -3,7 +3,7 @@
 <div class="justify-center items-center mx-auto w-5/12 mt-10">
 
     <h1
-        class="font-bold border-2 font-sans text-transparent text-7xl bg-clip-text
+        class="font-bold border-2 font-sans text-transparent text-2xl bg-clip-text
         bg-gradient-to-r from-gray-700 to-blue-800">
         CREATE STAGES
     </h1>
@@ -19,7 +19,7 @@
         <div class="sm:col-span-6">
             <label for="name" class="block text-sm font-medium text-gray-700">Name</label>
             <div class="mt-1">
-                <input type="text" id="name" name="name" value="{{ $stage->name }}}}"
+                <input type="text" id="name" name="name" value="{{ $stage->name }}"
                     class="block w-full transition duration-150 ease-in-out appearance-none bg-white border-2 border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
             </div>
             @error('name')
@@ -38,11 +38,15 @@
                 <div class="alert alert-danger">{{ $message }}</div>
             @enderror
         </div>
-        <div class="sm:col-span-6">
+        <div class="sm:col-span-6 pt-5">
             <label for="status" class="block text-sm font-medium text-gray-700">Status</label>
             <div class="mt-1">
-                <input type="text" id="status" name="status" value="{{ $stage->status }}"
-                    class="block w-full transition duration-150 ease-in-out appearance-none bg-white border-2 border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                <select class="form-multiselect h-10 rounded-lg w-full border-2 border-gray-400" name="status"
+                    id="status">
+                    @foreach (App\Enums\StageStatus::cases() as $status)
+                        <option value="{{ $status->value }}">{{ $status->name }}</option>
+                    @endforeach
+                </select>
             </div>
             @error('status')
                 <div class="alert alert-danger">{{ $message }}</div>

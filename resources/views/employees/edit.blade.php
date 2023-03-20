@@ -3,7 +3,7 @@
 <div class="justify-center items-center mx-auto w-5/12 mt-10">
 
     <h1
-        class="font-bold border-2 font-sans text-transparent text-7xl bg-clip-text
+        class="font-bold border-2 font-sans text-transparent text-2xl bg-clip-text
         bg-gradient-to-r from-gray-700 to-blue-800">
         CREATE EMPLOYEE
     </h1>
